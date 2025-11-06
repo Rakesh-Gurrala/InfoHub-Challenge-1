@@ -12,3 +12,12 @@ dist
 
 # Vercel/Render build files
 .vercel
+
+client/.env
+server/.env
+
+# Node & React
+node_modules/
+dist/
+.env
+*.log

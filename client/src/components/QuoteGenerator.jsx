@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchQuote as fetchQuoteApi } from '../api';
 
 function QuoteGenerator() {
   const [quote, setQuote] = useState('');
@@ -7,11 +7,11 @@ function QuoteGenerator() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchQuote = async () => {
+  const loadQuote = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get('/api/quote');
+      const res = await fetchQuoteApi();
       setQuote(res.data.quote);
       setAuthor(res.data.author);
     } catch {
@@ -22,7 +22,7 @@ function QuoteGenerator() {
   };
 
   useEffect(() => {
-    fetchQuote();
+    loadQuote();
   }, []);
 
   return (
@@ -40,7 +40,7 @@ function QuoteGenerator() {
       )}
 
       <button
-        onClick={fetchQuote}
+        onClick={loadQuote}
         className="mt-4 px-5 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-lg hover:bg-yellow-500 transition"
       >
         New Quote

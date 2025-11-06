@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { fetchCurrency } from '../api';
 
 function CurrencyConverter() {
   const [amount, setAmount] = useState('');
@@ -11,7 +11,7 @@ function CurrencyConverter() {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`/api/currency?amount=${amount}`);
+      const res = await fetchCurrency(amount);
       setResult(res.data);
     } catch {
       setError('Failed to fetch currency rates');

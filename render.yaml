@@ -4,6 +4,8 @@ services:
     env: node
     rootDir: server
     buildCommand: npm install
+  # Use the production start command so the service runs with node in production.
+  # nodemon (npm run dev) is for development and may exit or restart unexpectedly on some hosts.
     startCommand: npm start
     envVars:
       - key: WEATHER_API_KEY

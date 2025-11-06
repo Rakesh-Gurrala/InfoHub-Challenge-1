@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { fetchWeather as fetchWeatherApi } from "../api";
 
 function WeatherModule() {
   const [city, setCity] = useState("London");
@@ -11,7 +11,7 @@ function WeatherModule() {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get(`/api/weather?city=${city}`);
+      const response = await fetchWeatherApi(city);
       setData(response.data);
     } catch {
       setError("Could not fetch weather data.");

@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
@@ -59,5 +59,10 @@ app.get('/api/currency', async (req, res) => {
     res.status(500).json({ error: 'Could not fetch currency data.' });
   }
 });
+
+app.get('/', (req, res) => {
+  res.send('InfoHub Backend is running!');
+});
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
