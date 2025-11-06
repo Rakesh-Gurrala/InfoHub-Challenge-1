@@ -19,4 +19,4 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://infohub-challenge-ev5i.onrender.com
+        value: https://infohub-server-fnyu.onrender.com
