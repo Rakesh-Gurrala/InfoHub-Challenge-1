@@ -26,7 +26,7 @@ PORT=5000 WEATHER_API_KEY=66f70c3969a272ed5f7963f46cb5ebdf
 shell Copy code
 
 Client (client/.env)
-VITE_API_BASE_URL=https://infohub-server.onrender.com
+VITE_API_BASE_URL=https://infohub-server-fnyu.onrender.com
 
 yaml Copy code
 
@@ -81,9 +81,9 @@ services:
     startCommand: npm start
     envVars:
       - key: WEATHER_API_KEY
-        value: your_openweathermap_api_key_here
+        value: 66f70c3969a272ed5f7963f46cb5ebdf
 Deploy → wait for the live backend URL
-Example: https://infohub-server.onrender.com
+Example: https://infohub-server-fnyu.onrender.com
 
 🔹 Step 2: Deploy Frontend on Vercel
 Go to https://vercel.com
@@ -105,7 +105,7 @@ Click “Add Environment Variable”:
 makefile
 Copy code
 Key: VITE_API_BASE_URL
-Value: https://infohub-server.onrender.com
+Value: https://infohub-server-fnyu.onrender.com
 Click Deploy
 
 ✅ Your frontend will be live on
