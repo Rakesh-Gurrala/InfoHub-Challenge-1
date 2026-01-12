@@ -26,7 +26,7 @@ function QuoteGenerator() {
   }, []);
 
   return (
-    <div className="p-6 bg-yellow-100 rounded-xl shadow text-center max-w-md mx-auto">
+    <div className="p-6 bg-green-100 rounded-xl shadow text-center max-w-md mx-auto">
       <h2 className="text-2xl font-bold mb-3 text-gray-800">✨ Motivational Quote</h2>
 
       {loading && <p className="text-gray-600">Loading...</p>}

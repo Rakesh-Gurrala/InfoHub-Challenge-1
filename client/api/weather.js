@@ -5,6 +5,7 @@ export default async function handler(req, res) {
     const city = req.query.city || 'London';
     const apiKey = process.env.WEATHER_API_KEY;
     if (!apiKey) {
+      console.error('Weather API key not configured (process.env.WEATHER_API_KEY is empty)');
       return res.status(500).json({ error: 'Weather API key not configured' });
     }
 
@@ -18,7 +19,17 @@ export default async function handler(req, res) {
 
     res.status(200).json({ city, temperature: temp, condition, icon });
   } catch (error) {
-    console.error('Weather API error:', error?.message || error);
-    res.status(500).json({ error: 'Could not fetch weather data.' });
+    // Log detailed information for debugging (do not log secrets)
+    console.error('Weather API error:', {
+      message: error?.message,
+      code: error?.code,
+      responseStatus: error?.response?.status,
+      responseData: error?.response?.data,
+    });
+
+    // Return a helpful message to the client while keeping sensitive details out of the response
+    const status = error?.response?.status || 500;
+    const message = error?.response?.data?.message || 'Could not fetch weather data.';
+    res.status(status).json({ error: message });
   }
 }
